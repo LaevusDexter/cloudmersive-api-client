@@ -20,6 +20,7 @@ func (client Client) apiCall(endpoint string, payload interface{}, out interface
 		return err
 	}
 
+	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Apikey", client.ApiKey)
 
 	resp, err := client.Client.Do(req)
