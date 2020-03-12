@@ -26,6 +26,7 @@ func (client Client) apiCall(endpoint string, payload interface{}, out interface
 	if err != nil {
 		return err
 	}
+	defer resp.Body.Close()
 
 	if resp.StatusCode != 200 {
 		return errors.New("apiCall: " + resp.Status)
